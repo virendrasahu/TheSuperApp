@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
+
 export default function MovieModal({ movie, onClose }) {
+  const [posterSrc, setPosterSrc] = useState(movie?.Poster || movie?.fallbackPoster);
+
+  useEffect(() => {
+    setPosterSrc(movie?.Poster || movie?.fallbackPoster);
+  }, [movie]);
+
   if (!movie) {
     return null;
+  }
+
+  function handleImageError() {
+    if (movie.fallbackPoster && posterSrc !== movie.fallbackPoster) {
+      setPosterSrc(movie.fallbackPoster);
+    }
   }
 
   return (
@@ -9,7 +23,7 @@ export default function MovieModal({ movie, onClose }) {
         <button className="movie-modal__close" type="button" onClick={onClose} aria-label="Close movie details">
           ×
         </button>
-        <img src={movie.Poster} alt={movie.Title} />
+        <img src={posterSrc} alt={movie.Title} onError={handleImageError} />
         <div>
           <p>{movie.Year}</p>
           <h2>{movie.Title}</h2>

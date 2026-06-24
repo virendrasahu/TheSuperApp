@@ -19,6 +19,25 @@ User data and preferences are persisted in the browser using Zustand, so returni
 
 ---
 
+## Screenshots
+
+### Register Page
+![Register page](src/assets/ProjectSS/ProjectSS1.png)
+
+### Category Selection
+![Category selection page](src/assets/ProjectSS/ProjectSS2.png)
+
+### Dashboard
+![Dashboard page](src/assets/ProjectSS/ProjectSS3.png)
+
+### Movies
+![Movies page](src/assets/ProjectSS/ProjectSS4.png)
+
+### Movie Details Modal
+![Movie details modal](src/assets/ProjectSS/ProjectSS5.jpg)
+
+---
+
 ## Features
 
 ### Registration
@@ -78,7 +97,9 @@ User data and preferences are persisted in the browser using Zustand, so returni
 ```
 TheSuperApp/
 ├── src/
-│   ├── assets/optimized/     # Images (hero, categories, movies, avatar)
+│   ├── assets/
+│   │   ├── optimized/        # Hero, category, and movie images
+│   │   └── ProjectSS/        # Project screenshots for README
 │   ├── components/           # Reusable UI widgets and cards
 │   ├── data/                 # Static assets, categories, India regions
 │   ├── pages/                # Register, Categories, Dashboard, Movies

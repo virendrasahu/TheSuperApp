@@ -29,13 +29,16 @@ export async function fetchMoviesByCategory(category) {
       throw new Error(data.Error || "No movies found.");
     }
 
-    return data.Search.slice(0, 4).map((movie, index) => ({
-      ...movie,
-      Poster:
-        movie.Poster && movie.Poster !== "N/A"
-          ? movie.Poster
-          : localMoviePool[category]?.[index]?.Poster,
-    }));
+    return data.Search.slice(0, 4).map((movie, index) => {
+      const fallbackPoster = localMoviePool[category]?.[index]?.Poster;
+      const hasPoster = movie.Poster && movie.Poster !== "N/A";
+
+      return {
+        ...movie,
+        Poster: hasPoster ? movie.Poster : fallbackPoster,
+        fallbackPoster,
+      };
+    });
   } catch {
     return localMoviePool[category] || [];
   }
@@ -55,9 +58,12 @@ export async function fetchMovieDetails(movie, category) {
       throw new Error(data.Error || "No movie details.");
     }
 
+    const fallbackPoster = movie.fallbackPoster || movie.Poster;
+
     return {
       ...data,
-      Poster: data.Poster && data.Poster !== "N/A" ? data.Poster : movie.Poster,
+      Poster: data.Poster && data.Poster !== "N/A" ? data.Poster : fallbackPoster,
+      fallbackPoster,
     };
   } catch {
     const fallback = localMoviePool[category]?.find(
