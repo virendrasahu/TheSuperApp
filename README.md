@@ -46,16 +46,16 @@ User data and preferences are persisted in the browser using Zustand, so returni
 - Redirects to category selection after successful sign-up
 
 ### Category Selection
-- 9 entertainment genres: Action, Drama, Romance, Thriller, Western, Horror, Fantasy, Music, and Fiction
+- 8 entertainment genres: Action, Comedy, Drama, Music, Sports, Thriller, Fantasy, and Romance
 - Minimum 3 categories required to continue
 - Selected categories shown as removable tags
 
 ### Dashboard
 - **Profile card** — user details and selected category chips
-- **Weather widget** — live weather for Indian states/UTs via Open-Meteo
+- **Weather widget** — live weather for Indian states/UTs via OpenWeatherMap
 - **Notes widget** — editable sticky-note area with clear option
 - **Timer widget** — countdown timer with adjustable hours, minutes, and seconds
-- **News widget** — auto-rotating articles from Spaceflight News API
+- **News widget** — auto-rotating headlines from NewsAPI
 - **Browse button** — navigate to the movies page
 
 ### Movies
@@ -86,8 +86,8 @@ User data and preferences are persisted in the browser using Zustand, so returni
 
 | Service | Purpose | Fallback |
 |---------|---------|----------|
-| [Open-Meteo](https://open-meteo.com/) | Current weather by coordinates | Error state in widget |
-| [Spaceflight News API](https://spaceflightnewsapi.net/) | Latest news articles | Local fallback articles |
+| [OpenWeatherMap](https://openweathermap.org/api) | Current weather data | Error state in widget |
+| [NewsAPI](https://newsapi.org/register) | Latest news headlines | Local fallback articles |
 | [OMDb API](https://www.omdbapi.com/) | Movie search and details | Local movie pool in `assets.js` |
 
 ---
@@ -134,13 +134,19 @@ npm install
 
 ### Environment Variables (Optional)
 
-Create a `.env` file in the project root to use your own OMDb API key:
+Create a `.env` file in the project root with your API keys:
 
 ```env
 VITE_OMDB_KEY=your_omdb_api_key
+VITE_NEWS_API_KEY=your_newsapi_key
+VITE_WEATHER_API_KEY=your_openweathermap_key
 ```
 
-If no key is provided, the app uses the public demo key (`thewdb`) and falls back to local movie data when the API is unavailable.
+- NewsAPI key: [newsapi.org/register](https://newsapi.org/register)
+- OpenWeatherMap key: [openweathermap.org/api](https://openweathermap.org/api)
+- OMDb key: [omdbapi.com/apikey](https://www.omdbapi.com/apikey.aspx)
+
+If no OMDb key is provided, the app uses the public demo key (`thewdb`) and falls back to local movie data when the API is unavailable.
 
 ### Run Development Server
 

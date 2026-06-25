@@ -4,14 +4,13 @@ const apiKey = import.meta.env.VITE_OMDB_KEY || "thewdb";
 
 const queryByCategory = {
   Action: "action",
+  Comedy: "comedy",
   Drama: "drama",
-  Romance: "romance",
-  Thriller: "thriller",
-  Western: "western",
-  Horror: "horror",
-  Fantasy: "fantasy",
   Music: "music",
-  Fiction: "sci-fi",
+  Sports: "sports",
+  Thriller: "thriller",
+  Fantasy: "fantasy",
+  Romance: "romance",
 };
 
 export async function fetchMoviesByCategory(category) {

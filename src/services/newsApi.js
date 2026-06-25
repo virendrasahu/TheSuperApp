@@ -1,5 +1,7 @@
 import { heroAssets } from "../data/assets.js";
 
+const newsApiKey = import.meta.env.VITE_NEWS_API_KEY;
+
 const fallbackArticles = [
   {
     title: "Want to climb Mount Everest?",
@@ -21,8 +23,12 @@ const fallbackArticles = [
 
 export async function fetchLatestNews() {
   try {
+    if (!newsApiKey) {
+      throw new Error("Missing News API key.");
+    }
+
     const response = await fetch(
-      "https://api.spaceflightnewsapi.net/v4/articles/?limit=8"
+      `https://newsapi.org/v2/top-headlines?country=us&apiKey=${newsApiKey}`
     );
 
     if (!response.ok) {
@@ -31,14 +37,18 @@ export async function fetchLatestNews() {
 
     const data = await response.json();
 
-    return data.results.map((article) => ({
+    const mappedArticles = (data.articles || [])
+      .filter((article) => article.title && article.description)
+      .map((article) => ({
       title: article.title,
-      image: article.image_url || heroAssets.newsEverest,
-      description: article.summary,
-      source: article.news_site,
-      publishedAt: article.published_at,
+      image: article.urlToImage || heroAssets.newsEverest,
+      description: article.description,
+      source: article.source?.name || "NewsAPI",
+      publishedAt: article.publishedAt,
       url: article.url,
     }));
+
+    return mappedArticles.length > 0 ? mappedArticles : fallbackArticles;
   } catch {
     return fallbackArticles;
   }

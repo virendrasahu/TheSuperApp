@@ -3,14 +3,13 @@ import profileAvatar from "../assets/optimized/ProfileAvatar.png";
 import newsEverest from "../assets/optimized/Want to climb Mount Everest.png";
 
 import action from "../assets/optimized/Action.png";
+import comedy from "../assets/optimized/Fiction.png";
 import drama from "../assets/optimized/Drama.png";
 import romance from "../assets/optimized/Romance.png";
 import thriller from "../assets/optimized/Thriller.png";
-import western from "../assets/optimized/Western.png";
-import horror from "../assets/optimized/Horrer.png";
+import sports from "../assets/optimized/Western.png";
 import fantasy from "../assets/optimized/Fantasy.png";
 import music from "../assets/optimized/Misic.png";
-import fiction from "../assets/optimized/Fiction.png";
 
 import action1 from "../assets/optimized/Action1.png";
 import action2 from "../assets/optimized/Action2.png";
@@ -20,10 +19,6 @@ import thriller1 from "../assets/optimized/Thriller1.png";
 import thriller2 from "../assets/optimized/Thriller2.png";
 import thriller3 from "../assets/optimized/Thriller3.png";
 import thriller4 from "../assets/optimized/Thriller4.png";
-import horror1 from "../assets/optimized/Horrer (2).png";
-import horror2 from "../assets/optimized/Horrer (3).png";
-import horror3 from "../assets/optimized/Horrer (4).png";
-import horror4 from "../assets/optimized/Horrer (5).png";
 
 export const heroAssets = {
   registerHero,
@@ -33,14 +28,13 @@ export const heroAssets = {
 
 export const categories = [
   { name: "Action", image: action, color: "#ff531f", query: "action" },
+  { name: "Comedy", image: comedy, color: "#f4b400", query: "comedy" },
   { name: "Drama", image: drama, color: "#c88cff", query: "drama" },
-  { name: "Romance", image: romance, color: "#159b17", query: "romance" },
-  { name: "Thriller", image: thriller, color: "#7dbff4", query: "thriller" },
-  { name: "Western", image: western, color: "#9f2d08", query: "western" },
-  { name: "Horror", image: horror, color: "#7248f7", query: "horror" },
-  { name: "Fantasy", image: fantasy, color: "#f63ec8", query: "fantasy" },
   { name: "Music", image: music, color: "#e81635", query: "music" },
-  { name: "Fiction", image: fiction, color: "#69c85f", query: "sci fi" },
+  { name: "Sports", image: sports, color: "#2ea44f", query: "sports" },
+  { name: "Thriller", image: thriller, color: "#7dbff4", query: "thriller" },
+  { name: "Fantasy", image: fantasy, color: "#f63ec8", query: "fantasy" },
+  { name: "Romance", image: romance, color: "#159b17", query: "romance" },
 ];
 
 export const fallbackMovies = {
@@ -56,11 +50,17 @@ export const fallbackMovies = {
     movie("tt1649418", "The Gray Man", "2022", thriller3, "Action, Thriller"),
     movie("tt9764362", "The Menu", "2022", thriller4, "Comedy, Horror, Thriller"),
   ],
-  Horror: [
-    movie("tt8760708", "M3GAN", "2022", horror1, "Horror, Sci-Fi, Thriller"),
-    movie("tt12873562", "The Invitation", "2022", horror2, "Horror, Thriller"),
-    movie("tt11851548", "Orphan: First Kill", "2022", horror3, "Crime, Horror, Mystery"),
-    movie("tt1204977", "Ouija: Origin of Evil", "2016", horror4, "Drama, Horror, Mystery"),
+  Comedy: [
+    movie("tt1041829", "The Proposal", "2009", comedy, "Comedy, Romance"),
+    movie("tt3783958", "La La Land", "2016", music, "Comedy, Drama, Music"),
+    movie("tt0107048", "Groundhog Day", "1993", comedy, "Comedy, Fantasy, Romance"),
+    movie("tt0109830", "Forrest Gump", "1994", drama, "Drama, Romance"),
+  ],
+  Sports: [
+    movie("tt1745960", "Top Gun: Maverick", "2022", action3, "Action, Drama"),
+    movie("tt1291584", "Warrior", "2011", sports, "Action, Drama, Sport"),
+    movie("tt1024648", "Argo", "2012", action4, "Biography, Drama, Thriller"),
+    movie("tt0114709", "Remember the Titans", "2000", sports, "Biography, Drama, Sport"),
   ],
 };
 
@@ -76,13 +76,7 @@ export const localMoviePool = {
     movie("tt0120338", "Titanic", "1997", romance, "Drama, Romance"),
     movie("tt0332280", "The Notebook", "2004", romance, "Drama, Romance"),
     movie("tt0112471", "Before Sunrise", "1995", romance, "Drama, Romance"),
-    movie("tt1041829", "The Proposal", "2009", romance, "Comedy, Romance"),
-  ],
-  Western: [
-    movie("tt1853728", "Django Unchained", "2012", western, "Drama, Western"),
-    movie("tt0064116", "Once Upon a Time in the West", "1968", western, "Western"),
-    movie("tt0477348", "No Country for Old Men", "2007", western, "Crime, Drama"),
-    movie("tt1663202", "The Revenant", "2015", western, "Action, Adventure, Drama"),
+    movie("tt1041829", "The Proposal", "2009", comedy, "Comedy, Romance"),
   ],
   Fantasy: [
     movie("tt0241527", "Harry Potter and the Sorcerer's Stone", "2001", fantasy, "Adventure, Family, Fantasy"),
@@ -95,12 +89,6 @@ export const localMoviePool = {
     movie("tt1727824", "Bohemian Rhapsody", "2018", music, "Biography, Drama, Music"),
     movie("tt3783958", "La La Land", "2016", music, "Comedy, Drama, Music"),
     movie("tt1517451", "A Star Is Born", "2018", music, "Drama, Music, Romance"),
-  ],
-  Fiction: [
-    movie("tt1375666", "Inception", "2010", fiction, "Action, Adventure, Sci-Fi"),
-    movie("tt0816692", "Interstellar", "2014", fiction, "Adventure, Drama, Sci-Fi"),
-    movie("tt0133093", "The Matrix", "1999", fiction, "Action, Sci-Fi"),
-    movie("tt2543164", "Arrival", "2016", fiction, "Drama, Mystery, Sci-Fi"),
   ],
 };
 
